@@ -8,6 +8,7 @@ import os
 from google.cloud import tasks_v2
 from config import XML_URL, PROJECT_ID, TASK_QUEUE, ZONE
 from services import firestore
+import geohash
 
 sync_bp = Blueprint('sync_bp', __name__, )
 
@@ -106,6 +107,7 @@ def read_xml(path_to_file):
             "prix": [],
             "horaires": [],
             "services": [],
+            "geohash": geohash.encode(float(add_char(pdv.get('latitude'), '.', 2)), float(add_char(pdv.get('longitude'), '.', 1)))
         }
 
         for service in pdv.findall('services/service'):
