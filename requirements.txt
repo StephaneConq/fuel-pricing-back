@@ -4,6 +4,7 @@ certifi==2020.12.5
 cffi==1.14.4
 chardet==4.0.0
 click==7.1.2
+docutils==0.16
 firebase-admin==4.5.0
 Flask==1.1.2
 Flask-Cors==3.0.9
@@ -33,6 +34,7 @@ protobuf==3.14.0
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
 pycparser==2.20
+python-geohash==0.8.5
 pytz==2020.4
 PyYAML==5.3.1
 requests==2.25.1
