@@ -1,4 +1,4 @@
 cron:
 - description: "sync all stations"
   url: /api/sync
-  schedule: every 9999 days
+  schedule: every day 09:00
