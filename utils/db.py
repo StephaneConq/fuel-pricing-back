@@ -15,10 +15,14 @@ class DBUtil:
 
     def __new__(cls):
         if not isinstance(cls.instance_, cls):
+            print("creating new instances")
             cls._instance = object.__new__(cls)
             cls.Base = declarative_base()
             cls.engine = create_engine(
-                connection_string, connect_args={"options": "-csearch_path=core"}
+                connection_string,
+                connect_args={"options": "-csearch_path=core"},
+                pool_size=20,
+                max_overflow=0,
             )
             cls.Base.metadata.create_all(cls._instance.engine)
             cls.Session = sessionmaker(bind=cls._instance.engine)

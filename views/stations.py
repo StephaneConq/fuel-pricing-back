@@ -12,10 +12,10 @@ def run_sync():
 
 @stations_router.get("")
 def list_stations(
-    left_lat: float = None,
-    left_lng: float = None,
     right_lat: float = None,
     right_lng: float = None,
+    left_lat: float = None,
+    left_lng: float = None,
 ):
     bounds = None
     if left_lat and left_lng and right_lat and right_lng:

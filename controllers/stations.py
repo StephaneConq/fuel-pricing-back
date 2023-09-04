@@ -66,13 +66,15 @@ def format_station(station):
 def list_stations(bounds=None):
     db_utils = DBUtil()
     if bounds is None:
+        db_utils.session.close()
         return db_utils.list_all(Station)
     stations = (
         db_utils.session.query(Station)
-        .filter(Station.lat < bounds.get("left").get("lat"))
-        .filter(Station.lat > bounds.get("right").get("lat"))
+        .filter(Station.lat > bounds.get("left").get("lat"))
+        .filter(Station.lat < bounds.get("right").get("lat"))
         .filter(Station.lng < bounds.get("right").get("lng"))
         .filter(Station.lng > bounds.get("left").get("lng"))
         .all()
     )
+    db_utils.session.close()
     return list(map(lambda s: s.as_dict(), stations))
